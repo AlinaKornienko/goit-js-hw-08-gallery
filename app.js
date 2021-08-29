@@ -72,6 +72,9 @@ const galleryCont = createGalleryItemsMarkup(galleryItems);
 
 galleryEl.insertAdjacentHTML('beforeend', galleryCont);
 
+galleryEl.addEventListener('click', onImageOpenClick);
+lightboxEl.addEventListener('click', onImageCloseClick);
+lightboxImgEl.addEventListener('focusin', onLinkGalleryFocus);
 
 function createGalleryItemsMarkup(items) {
   return items
@@ -93,6 +96,16 @@ function createGalleryItemsMarkup(items) {
     })
     .join('');
 };
+
+function onImageOpenClick(event) {
+  event.preventDefault();
+  const {target} = event;
+    if (target.nodeName !== 'IMG') return;
+    lightboxEl.classList.add('is-open');
+    lightboxImgEl.src = `${event.target.dataset.sourse}`;
+    lightboxImgEl.alt = `${event.target.attributes.alt.value}`;
+};
+
 
 
 
