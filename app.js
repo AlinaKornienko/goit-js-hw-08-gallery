@@ -99,11 +99,25 @@ function createGalleryItemsMarkup(items) {
 
 function onImageOpenClick(event) {
   event.preventDefault();
-  const {target} = event;
-    if (target.nodeName !== 'IMG') return;
+  if (!event.target.classList.contains('gallery__image')) {
+  return;}
     lightboxEl.classList.add('is-open');
     lightboxImgEl.src = `${event.target.dataset.sourse}`;
     lightboxImgEl.alt = `${event.target.attributes.alt.value}`;
+};
+
+function closeLightbox() {
+  lightboxEl.classList.remove('is-open');
+  lightboxImgEl.src = '';
+  lightboxImgEl.alt = '';
+};
+
+function onImageCloseClick(event) {
+  event.preventDefault();
+  if (!event.target.classList.contains('lightbox')) {
+    return;
+  }
+  closeLightbox();
 };
 
 
