@@ -69,8 +69,7 @@ const lightboxEl = document.querySelector('.js-lightbox');
 const overlay = document.querySelector('.lightbox__overlay');
 const lightboxImgEl = document.querySelector('.lightbox__image');
 const buttonClose = document.querySelector('[data-action="close-lightbox"]');
-
-const refs = {
+const ref = {
   window: window,
 }
 
@@ -80,7 +79,7 @@ galleryEl.insertAdjacentHTML('beforeend', galleryCont);
 galleryEl.addEventListener('click', onImageOpenClick);
 overlay.addEventListener('click', onOverlayClick);
 buttonClose.addEventListener('click', onButtonCloseClick);
-refs.window.addEventListener('keydown', onButtonEscKeydown);
+ref.window.addEventListener('keydown', onButtonEscKeydown);
 
 function createGalleryItemsMarkup(items) {
   return items
