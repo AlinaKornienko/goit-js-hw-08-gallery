@@ -66,18 +66,21 @@ const galleryItems = [
 
 const galleryEl = document.querySelector('.js-gallery');
 const lightboxEl = document.querySelector('.js-lightbox');
-const overlay = document.querySelector('lightbox__overlay');
+const overlay = document.querySelector('.lightbox__overlay');
 const lightboxImgEl = document.querySelector('.lightbox__image');
 const buttonClose = document.querySelector('[data-action="close-lightbox"]');
-const window = window;
+
+const refs = {
+  window: window,
+}
 
 const galleryCont = createGalleryItemsMarkup(galleryItems);
 
 galleryEl.insertAdjacentHTML('beforeend', galleryCont);
-overlay.addEventListener('click', onOverlayClick);
 galleryEl.addEventListener('click', onImageOpenClick);
+overlay.addEventListener('click', onOverlayClick);
 buttonClose.addEventListener('click', onButtonCloseClick);
-window.addEventListener('keydown', onButtonEscKeydown);
+refs.window.addEventListener('keydown', onButtonEscKeydown);
 
 function createGalleryItemsMarkup(items) {
   return items
@@ -121,7 +124,7 @@ function onButtonCloseClick(event) {
   if (!event.target.classList.contains('lightbox__button')) {
     return;
   }
-  closelightbox();
+  closeLightbox();
 };
 
 function onButtonEscKeydown(event) {
@@ -129,7 +132,7 @@ function onButtonEscKeydown(event) {
   if (event.code !== 'Escape') {
     return;
   }
-  closelightbox();
+  closeLightbox();
 };
 
 function closeLightbox() {
