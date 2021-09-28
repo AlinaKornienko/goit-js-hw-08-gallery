@@ -105,11 +105,12 @@ function createGalleryItemsMarkup(items) {
 function onImageOpenClick(event) {
   event.preventDefault();
   if (!event.target.classList.contains('gallery__image')) {
-  return;}
-    lightboxEl.classList.add('is-open');
-    lightboxImgEl.src = `${event.target.dataset.sourse}`;
-    lightboxImgEl.alt = `${event.target.attributes.alt.value}`;
-};
+    return;
+  }
+  lightboxEl.classList.add('is-open');
+  lightboxImgEl.src = `${event.target.dataset.source}`;
+  lightboxImgEl.alt = `${event.target.attributes.alt.value}`;
+}
 
 function onOverlayClick(event) {
   event.preventDefault();
